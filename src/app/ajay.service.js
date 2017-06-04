@@ -25,11 +25,20 @@ var AjayService = (function () {
         var body = res.json();
         return body || {};
     };
+    AjayService.prototype.doDeleteAjax = function (Id) {
+        var myxUrl = "http://localhost:62148/Api/Values/" + Id;
+        return this.http.delete(myxUrl)
+            .map(this.extractData);
+    };
     AjayService.prototype.doPutAjax = function (Id) {
         var myxUrl = "http://localhost:62148/Api/Values/" + Id;
         var data = new http_1.URLSearchParams();
-        data.append('value', 782);
-        return this.http.put(myxUrl)
+        data.append('Id', String(Id));
+        data.append('Name', "random name hh");
+        data.append('Gender', "male");
+        data.append('City', "random city hh");
+        data.append('DepartmentId', "");
+        return this.http.put(myxUrl, data)
             .map(this.extractData);
     };
     return AjayService;

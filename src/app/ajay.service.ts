@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Jsonp, URLSearchParams } from '@angular/http';
-import { Http } from '@angular/http';
+import { Http,Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -17,13 +17,23 @@ export class AjayService {
     let body = res.json();
     return body || { };
   }
-  doPutAjax(Id:int){
+  doDeleteAjax(Id:number){
   	let myxUrl=`http://localhost:62148/Api/Values/${Id}`;
-  	 let data = new URLSearchParams();
-  data.append('value', 782);
-  	return this.http.put(myxUrl)
+  	return this.http.delete(myxUrl)
                     .map(this.extractData);
   }
+  doPutAjax(Id:number){
+  	let myxUrl=`http://localhost:62148/Api/Values/${Id}`;
+  	 let data = new URLSearchParams();
+  data.append('Id', String(Id));
+  data.append('Name', "random name hh");
+  data.append('Gender', "male");
+  data.append('City', "random city hh");
+  data.append('DepartmentId', "");
+  	return this.http.put(myxUrl,data)
+                    .map(this.extractData);
+  }
+
   /*constructor(private jsonp: Jsonp) {}
   doAjaxServe(term: string) {
     let wikiUrl = 'http://en.wikipedia.org/w/api.php';

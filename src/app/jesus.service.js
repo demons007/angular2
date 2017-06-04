@@ -19,7 +19,7 @@ var JesusService = (function () {
     }
     JesusService.prototype.doAjaxServe = function () {
         var data = new http_1.URLSearchParams();
-        data.append('Id', 782);
+        data.append('Id', '782');
         data.append('Name', "ajay");
         data.append('Gender', "male");
         data.append('City', "kolkata");

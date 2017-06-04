@@ -17,7 +17,7 @@ var ajay_service_1 = require("./ajay.service");
 var AllahComponent = (function () {
     function AllahComponent(ajayService) {
         this.ajayService = ajayService;
-        this.name = 'Allah';
+        this.name = 'Mahadeva + Vishnu + Bramha + Jesus + Allah +Buddha';
         this.term = "angular";
     }
     AllahComponent.prototype.ngOnInit = function () {
@@ -27,6 +27,11 @@ var AllahComponent = (function () {
         //console.log(ok.value)
         console.log(evt.currentTarget.parentElement.lastChild.value);
         this.items = this.ajayService.doPutAjax(evt.currentTarget.parentElement.lastChild.value);
+        //this.items = this.ajayService.doPutAjax(ok.value);
+    };
+    AllahComponent.prototype.delHandler = function (evt) {
+        console.log(evt.currentTarget.parentElement.lastChild.value);
+        this.items = this.ajayService.doDeleteAjax(evt.currentTarget.parentElement.lastChild.value);
         //this.items = this.ajayService.doPutAjax(ok.value);
     };
     return AllahComponent;
@@ -43,7 +48,7 @@ AllahComponent = __decorate([
     core_1.Component({
         selector: 'al',
         providers: [ajay_service_1.AjayService],
-        template: "<h1>Hello {{name}}</h1>\n  \t\t<table>\n  \t\t\t<tr><td>Id</td><td>Name</td><td>City</td><td>Gender</td><td></td></tr>\n  \t\t\t<tr *ngFor=\"let item of items | async\"><td>{{item.Id}}</td><td>{{item.Name}}</td><td>{{item.City}}</td><td>{{item.Gender}}</td><td><button (click)=\"editHandler($event)\">Edit</button><input [hidden]=\"true\" [value]=\"item.Id\" /></td></tr>\n  \t\t</table>\n  ",
+        template: "<h1>Hello {{name}}</h1>\n  \t\t<table>\n  \t\t\t<tr><td>Id</td><td>Name</td><td>City</td><td>Gender</td><td></td></tr>\n  \t\t\t<tr *ngFor=\"let item of items | async\"><td>{{item.Id}}</td><td>{{item.Name}}</td><td>{{item.City}}</td><td>{{item.Gender}}</td><td><button (click)=\"editHandler($event)\">Edit</button><button (click)=\"delHandler($event)\">Delete</button><input [hidden]=\"true\" [value]=\"item.Id\" /></td></tr>\n  \t\t</table>\n  ",
         styles: ['h1{font-weight: normal;}', 'table{width:100%;border:1px dashed black;border-collapse:separate;border-spacing:5em;}', 'tr{border:1px solid black;}']
     }),
     core_2.Injectable(),

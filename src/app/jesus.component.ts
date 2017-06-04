@@ -30,7 +30,7 @@ term: string="angular";
  ngOnInit(){
  	//this.items = this.jService.doAjaxServe();
  }
- postJesus(evt){
+ postJesus(evt:any){
  	this.items = this.jService.doAjaxServe();
  	
  	this.dis=true;
